@@ -6,16 +6,55 @@
   <title>AI ROI Calculator</title>
   <script defer src="script.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
 </head>
-<body class="bg-white text-gray-800 min-h-screen flex flex-col items-center justify-start p-6">
-  <h1 class="text-3xl font-bold mb-6">AI Tool ROI Calculator</h1>
-  <div class="w-full max-w-xl space-y-4">
-    <input id="monthlyCost" type="number" placeholder="Monthly Cost of AI Tool ($)" class="border p-2 w-full">
-    <input id="timeSaved" type="number" placeholder="Hours Saved Per Week" class="border p-2 w-full">
-    <input id="hourlyRate" type="number" placeholder="Your Hourly Rate ($)" class="border p-2 w-full">
-    <input id="extraIncome" type="number" placeholder="Extra Monthly Income from Tool ($, optional)" class="border p-2 w-full">
-    <button onclick="calculateROI()" class="bg-black text-white py-2 px-4 rounded">Calculate ROI</button>
-  </div>
-  <div id="result" class="mt-6 max-w-xl w-full p-4 bg-gray-100 rounded hidden"></div>
+<body class="bg-white text-gray-800 min-h-screen px-6 py-10">
+  <main class="max-w-2xl mx-auto space-y-10">
+    <section>
+      <h1 class="text-3xl font-bold mb-4">AI Tool ROI Calculator</h1>
+      <div class="space-y-4">
+        <input id="monthlyCost" type="number" placeholder="Monthly Cost of AI Tool ($)" class="border p-2 w-full">
+        <input id="timeSaved" type="number" placeholder="Hours Saved Per Week" class="border p-2 w-full">
+        <input id="hourlyRate" type="number" placeholder="Your Hourly Rate ($)" class="border p-2 w-full">
+        <input id="extraIncome" type="number" placeholder="Extra Monthly Income ($, optional)" class="border p-2 w-full">
+        <button onclick="calculateROI()" class="bg-black text-white py-2 px-4 rounded">Calculate ROI</button>
+      </div>
+      <div id="result" class="mt-4 p-4 bg-gray-100 rounded hidden"></div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold mb-4">Break-Even Calculator</h2>
+      <div class="space-y-4">
+        <input id="be-cost" type="number" placeholder="Monthly Cost of AI Tool ($)" class="border p-2 w-full">
+        <input id="be-rate" type="number" placeholder="Your Hourly Rate ($)" class="border p-2 w-full">
+        <button onclick="calculateBreakEven()" class="bg-blue-600 text-white py-2 px-4 rounded">Calculate Break-Even</button>
+      </div>
+      <div id="be-result" class="mt-4 p-4 bg-blue-50 rounded hidden"></div>
+    </section>
+
+    <section class="my-8">
+      <ins class="adsbygoogle block" style="display:block"
+        data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="1234567890"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </section>
+
+    <section>
+      <h3 class="text-xl font-bold mb-2">Get Weekly AI Tool Picks</h3>
+      <form action="https://buttondown.email/api/emails/embed-subscribe/yournewsletter" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.email/yournewsletter', 'popupwindow')" class="space-y-2">
+        <input type="email" name="email" placeholder="Enter your email" class="border p-2 w-full" required />
+        <input type="submit" value="Subscribe" class="bg-green-600 text-white py-2 px-4 rounded" />
+      </form>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold mt-10">Popular AI Tools</h2>
+      <ul class="list-disc pl-6 mt-4 space-y-2">
+        <li><a href="https://jasper.ai?via=youraffiliateid" target="_blank" class="text-blue-600 underline">Jasper AI – Best for marketing content</a></li>
+        <li><a href="https://koala.sh?ref=youraffiliateid" target="_blank" class="text-blue-600 underline">KoalaWriter – Blog writer for SEO</a></li>
+        <li><a href="https://notion.so" target="_blank" class="text-blue-600 underline">Notion AI – Productivity + writing assistant</a></li>
+      </ul>
+    </section>
+  </main>
 </body>
 </html>

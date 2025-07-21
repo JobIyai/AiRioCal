@@ -15,3 +15,19 @@ function calculateROI() {
   `;
   resultDiv.classList.remove('hidden');
 }
+
+function calculateBreakEven() {
+  const cost = parseFloat(document.getElementById('be-cost').value) || 0;
+  const rate = parseFloat(document.getElementById('be-rate').value) || 0;
+
+  if (rate === 0) return;
+
+  const weeklyRate = rate * 4;
+  const breakEvenHours = cost / weeklyRate;
+
+  const beResult = document.getElementById('be-result');
+  beResult.innerHTML = `
+    <p class="text-xl font-semibold">You need to save <strong>${breakEvenHours.toFixed(2)} hours/week</strong> for this tool to break even.</p>
+  `;
+  beResult.classList.remove('hidden');
+}
