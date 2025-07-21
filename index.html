@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI ROI Calculator</title>
+  <script defer src="script.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800 min-h-screen flex flex-col items-center justify-start p-6">
+  <h1 class="text-3xl font-bold mb-6">AI Tool ROI Calculator</h1>
+  <div class="w-full max-w-xl space-y-4">
+    <input id="monthlyCost" type="number" placeholder="Monthly Cost of AI Tool ($)" class="border p-2 w-full">
+    <input id="timeSaved" type="number" placeholder="Hours Saved Per Week" class="border p-2 w-full">
+    <input id="hourlyRate" type="number" placeholder="Your Hourly Rate ($)" class="border p-2 w-full">
+    <input id="extraIncome" type="number" placeholder="Extra Monthly Income from Tool ($, optional)" class="border p-2 w-full">
+    <button onclick="calculateROI()" class="bg-black text-white py-2 px-4 rounded">Calculate ROI</button>
+  </div>
+  <div id="result" class="mt-6 max-w-xl w-full p-4 bg-gray-100 rounded hidden"></div>
+</body>
+</html>
