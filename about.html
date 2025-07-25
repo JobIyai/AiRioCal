@@ -2,39 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About – AI ROI Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI ROI Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+  <script defer>
+    function calculateROI() {
+      const monthlyCost = parseFloat(document.getElementById('monthlyCost').value) || 0;
+      const timeSaved = parseFloat(document.getElementById('timeSaved').value) || 0;
+      const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+      const extraIncome = parseFloat(document.getElementById('extraIncome').value) || 0;
+      
+      const monthlyValue = (timeSaved * 4 * hourlyRate) + extraIncome;
+      const roi = ((monthlyValue - monthlyCost) / monthlyCost) * 100;
+      const result = document.getElementById('result');
+      
+      result.classList.remove('hidden');
+      result.innerHTML = `
+        <p class="text-lg font-semibold">Estimated ROI: <span class="text-indigo-700">${roi.toFixed(2)}%</span></p>
+        <p class="text-sm mt-2">Monthly Gain: <strong>$${monthlyValue.toFixed(2)}</strong><br> Monthly Cost: <strong>$${monthlyCost.toFixed(2)}</strong></p>
+      `;
+    }
+  </script>
 </head>
-<body class="bg-white text-gray-800 font-sans p-6 space-y-8">
-
-    <nav class="bg-gray-100 w-full px-4 py-3 shadow-md flex justify-center space-x-6">
-  <a href="index.html" class="text-gray-800 hover:text-blue-600 font-medium">Home</a>
-  <a href="blog.html" class="text-gray-800 hover:text-blue-600 font-medium">Blog</a>
-  <a href="about.html" class="text-gray-800 hover:text-blue-600 font-medium">About</a>
-  <a href="privacy.html" class="text-gray-800 hover:text-blue-600 font-medium">Privacy</a>
-  <a href="contact.html" class="text-gray-800 hover:text-blue-600 font-medium">Contact</a>
-</nav>
-
-  <header class="text-center">
-    <h1 class="text-4xl font-bold mb-2">About AI ROI Calculator</h1>
-    <p class="text-gray-600">Created by an 18-year-old indie builder, July 2025</p>
+<body class="bg-gradient-to-b from-gray-50 to-white text-gray-800 min-h-screen flex flex-col items-center py-12 px-4">
+  <header class="w-full text-center mb-10">
+    <h1 class="text-5xl font-bold text-gray-900">AI ROI Calculator</h1>
+    <p class="text-lg text-gray-600 mt-2">Is your AI subscription really worth it?</p>
   </header>
 
-  <section class="max-w-3xl mx-auto space-y-4">
-    <p>
-      AI tools are powerful, but not always worth the cost.
-      This calculator helps you see if you're actually saving time or earning more than you're spending.
-    </p>
-    <p>
-      I built this tool as a way to help creators, freelancers, and solo builders make smarter decisions in a world full of $29/month subscriptions.
-      There's no login, no tracking, and no gimmicks — just math.
-    </p>
-    <p>
-      I plan to expand this site with blogs, comparisons, and ROI breakdowns for every major AI tool on the market. Stay tuned.
-    </p>
-    <a href="index.html" class="text-blue-600 underline">← Back to Calculator</a>
+  <main class="w-full max-w-2xl bg-white p-8 rounded-2xl shadow-2xl">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Enter Your Info:</h2>
+
+    <div class="space-y-4">
+      <input id="monthlyCost" type="number" placeholder="Monthly Cost of AI Tool ($)" class="border border-gray-300 p-3 w-full rounded-lg focus:ring focus:ring-indigo-200">
+      <input id="timeSaved" type="number" placeholder="Hours Saved Per Week" class="border border-gray-300 p-3 w-full rounded-lg focus:ring focus:ring-indigo-200">
+      <input id="hourlyRate" type="number" placeholder="Your Hourly Rate ($)" class="border border-gray-300 p-3 w-full rounded-lg focus:ring focus:ring-indigo-200">
+      <input id="extraIncome" type="number" placeholder="Extra Monthly Income from Tool ($, optional)" class="border border-gray-300 p-3 w-full rounded-lg focus:ring focus:ring-indigo-200">
+      <button onclick="calculateROI()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg shadow">Calculate ROI</button>
+    </div>
+
+    <div id="result" class="mt-6 hidden rounded-xl p-4 bg-indigo-50 text-indigo-800 border-l-4 border-indigo-400"></div>
+
+    <div class="mt-10">
+      <canvas id="roiChart" width="400" height="200"></canvas>
+    </div>
+  </main>
+
+  <section class="mt-16 max-w-2xl text-center">
+    <h2 class="text-xl font-bold mb-3">How does this calculator work?</h2>
+    <p class="text-gray-600">We multiply the hours you save weekly by your hourly rate, estimate your monthly value from using AI tools, and compare it to your cost. This gives a rough ROI percentage to help you decide if the tool is worth it.</p>
   </section>
 
+  <section class="mt-16 max-w-2xl text-center">
+    <h2 class="text-xl font-bold mb-3">FAQs</h2>
+    <p class="text-gray-600 mb-2"><strong>Q: Does this support every AI tool?</strong><br>A: You can calculate ROI for any AI software by entering your own values.</p>
+    <p class="text-gray-600"><strong>Q: Is this calculator free?</strong><br>A: Yes — forever.</p>
+  </section>
+
+  <footer class="text-center text-gray-500 text-sm mt-16 py-6">
+    &copy; 2025 AI Worth-It Tools • Built with love • <a href="#" class="text-blue-600">Privacy</a>
+  </footer>
 </body>
 </html>
